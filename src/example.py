@@ -15,5 +15,25 @@ def get_index():
     print("query called")
     return static_file("index.html", root="static")
 
+@get("/register")
+def get_register():
+    try:
+        name = request.query["name"]
+        research = request.query["research"]
+        email = request.query["email"]
+        password = request.query["password"]
+        vacancy = request.query["vacancy"]
+    except KeyError:
+        return {"respose": "Some error occurred"}
+    else:
+        results = graph.cypher.execute(
+        "create (n:professor{name:" + "\"" + name + "\"" + "," + 
+                            "research:" + "\"" + research + "\"" + "," +
+                            "email:" + "\"" + email + "\"" + "," +
+                            "password:" + "\"" + password + "\"" + "," +
+                            "vacancy:" + "\"" + vacancy + "\"" + "});"
+        )
+        return {"response": "Registered successfully"}
+
 if __name__ == "__main__":
     run(port=8080)
