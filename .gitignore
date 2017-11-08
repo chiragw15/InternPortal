@@ -1,1 +1,2 @@
-/neo/venv/*
+/src/venv/*
+*.pyc
