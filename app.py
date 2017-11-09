@@ -15,7 +15,7 @@ from bottle import get, run, request, response, static_file
 
 from neo4jrestclient.client import GraphDatabase
 
-from urlparse import urlparse, urlunparse
+from urllib.parse import urlparse, urlunparse
 
 bottle.debug(True)
 
