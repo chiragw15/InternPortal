@@ -8,16 +8,29 @@ from sys import argv
 
 import bottle
 from bottle import get, run, request, response, static_file
-from py2neo import Graph, authenticate
-from urllib.parse import urlparse, urlunparse
+
+#from py2neo import Graph, authenticate
+#from urllib.parse import urlparse, urlunparse
+
+
+from neo4jrestclient.client import GraphDatabase
+
+from urlparse import urlparse, urlunparse
 
 bottle.debug(True)
+
+url = urlparse(GRAPHENEDB_URL)
+url_without_auth = urlunparse((url.scheme, "{0}:{1}".format(url.hostname, url.port), url.path, None, None, None))
+
+gdb = GraphDatabase(url_without_auth, username = url.username, password = url.password)
+
+
 #graph = Graph("http://neo4j:Chirag@1234@localhost:7474/db/data/")
 
-graphenedb_url = os.environ.get("GRAPHENEDB_BOLT_URL")
-graphenedb_user = os.environ.get("GRAPHENEDB_BOLT_USER")
-graphenedb_pass = os.environ.get("GRAPHENEDB_BOLT_PASSWORD")
-graph = Graph(graphenedb_url, user=graphenedb_user, password=graphenedb_pass, bolt = True, secure = True, http_port = 24789, https_port = 24780)
+#graphenedb_url = os.environ.get("GRAPHENEDB_BOLT_URL")
+#graphenedb_user = os.environ.get("GRAPHENEDB_BOLT_USER")
+#graphenedb_pass = os.environ.get("GRAPHENEDB_BOLT_PASSWORD")
+#graph = Graph(graphenedb_url, user=graphenedb_user, password=graphenedb_pass, bolt = True, secure = True, http_port = 24789, https_port = 24780)
 
 @get("/")
 def get_index():
@@ -38,7 +51,7 @@ def get_registerJSON():
     except KeyError:
         return {"respose": "Some error occurred"}
     else:
-        results = graph.run(
+        results = gdb.query(
         "create (n:professor{name:" + "\"" + name + "\"" + "," + 
                             "research:" + "\"" + research + "\"" + "," +
                             "email:" + "\"" + email + "\"" + "," +
