@@ -20,7 +20,7 @@ user = url.username
 password = url.password
 
 authenticate(url_without_auth, user, password)
-graph = Graph(url_without_auth, bolt = False)
+graph = Graph(url_without_auth)
 
 @get("/")
 def get_index():
