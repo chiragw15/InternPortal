@@ -2,9 +2,15 @@
 
 import json
 
+import os
+from os import environ as env
+from sys import argv
+
+import bottle
 from bottle import get, run, request, response, static_file
 from py2neo import Graph
 
+bottle.debug(True)
 graph = Graph("http://neo4j:Chirag@1234@localhost:7474/db/data/")
 
 @get("/")
@@ -36,6 +42,4 @@ def get_registerJSON():
         print(results)
         return {"response": "Registered successfully"}
 
-
-if __name__ == "__main__":
-    run(port=8080)
+bottle.run(host='0.0.0.0', port=argv[1])
