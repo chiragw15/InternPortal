@@ -9,14 +9,14 @@ graph = Graph("http://neo4j:Chirag@1234@localhost:7474/db/data/")
 
 @get("/")
 def get_index():
-    graph.cypher.execute(
-        "create (n:test{name:\"Chirag2\"})"
-    )
-    print("query called")
     return static_file("index.html", root="static")
 
-@get("/register")
+@get("/register") 
 def get_register():
+	return static_file("register.html", root="static")
+
+@get("/register.json")
+def get_registerJSON():
     try:
         name = request.query["name"]
         research = request.query["research"]
@@ -33,7 +33,9 @@ def get_register():
                             "password:" + "\"" + password + "\"" + "," +
                             "vacancy:" + "\"" + vacancy + "\"" + "});"
         )
+        print(results)
         return {"response": "Registered successfully"}
+
 
 if __name__ == "__main__":
     run(port=8080)
