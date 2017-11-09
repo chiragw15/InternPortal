@@ -1,2 +1,2 @@
 bottle
-py2neo==2.0.8
+py2neo
