@@ -8,10 +8,19 @@ from sys import argv
 
 import bottle
 from bottle import get, run, request, response, static_file
-from py2neo import Graph
+from py2neo import Graph, authenticate
+from urlparse import urlparse, urlunparse
 
 bottle.debug(True)
-graph = Graph("http://neo4j:Chirag@1234@localhost:7474/db/data/")
+#graph = Graph("http://neo4j:Chirag@1234@localhost:7474/db/data/")
+
+url = urlparse(os.environ.get("GRAPHENEDB_URL"))
+url_without_auth = urlunparse((url.scheme, "{0}:{1}".format(url.hostname, url.port), '', None, None, None))
+user = url.username
+password = url.password
+
+authenticate(url_without_auth, user, password)
+graph = Graph(url_without_auth, bolt = False)
 
 @get("/")
 def get_index():
