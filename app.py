@@ -9,7 +9,7 @@ from sys import argv
 import bottle
 from bottle import get, run, request, response, static_file
 from py2neo import Graph, authenticate
-from urlparse import urlparse, urlunparse
+from urllib.parse import urlparse, urlunparse
 
 bottle.debug(True)
 #graph = Graph("http://neo4j:Chirag@1234@localhost:7474/db/data/")
