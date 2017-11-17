@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function populate(s1,s2){ // names randomly generated with python script
+	// MINIMUM UI
+	var s1= document.getElementById(s1);
+	var s2=document.getElementById(s2);
+	s2.innerHTML="";
+	if(s1.value=="Deep Learning"){
+		var optionArray = ["|", "Jennifer Richter|Jennifer Richter", "Sean Ferrell|Sean Ferrell", "Norma Perry|Norma Perry", "Howard Kraeger|Howard Kraeger", "Sarah Jones|Sarah Jones", "George Tobias|George Tobias", "Jeannie Sobieski|Jeannie Sobieski", "James Clark|James Clark", "Francisco Danna|Francisco Danna", "Max Morton|Max Morton", "Carol Myers|Carol Myers", "Garth Burge|Garth Burge", "Christine Ramin|Christine Ramin", "Catherine Mitchell|Catherine Mitchell", "Penny Nichols|Penny Nichols", "Joe Cleveland|Joe Cleveland", "Juan Kovach|Juan Kovach", "Nancy Hatcher|Nancy Hatcher", "David Hardy|David Hardy", "David Killian|David Killian"];
+	}
+ 	if(s1.value=="Big Data"){
+		var optionArray = ["|", "Tiffany Miles|Tiffany Miles", "John Bell|John Bell", "Michael Stanford|Michael Stanford", "Phyllis Dale|Phyllis Dale", "Walter Larsen|Walter Larsen", "Kenneth Farrar|Kenneth Farrar", "Joseph Wheeler|Joseph Wheeler", "Margaret Wang|Margaret Wang", "Julia Wilcox|Julia Wilcox", "Todd Nakken|Todd Nakken", "Carlos Bement|Carlos Bement", "Robert Garofalo|Robert Garofalo", "Edna Griffis|Edna Griffis", "Susan Harrison|Susan Harrison", "Geraldo Jaquess|Geraldo Jaquess", "Paul Larocco|Paul Larocco", "Helen Yankey|Helen Yankey"];
+	}
+	if(s1.value=="Cryptography"){
+		var optionArray = ["|", "Matthew Jones|Matthew Jones", "Jack Smith|Jack Smith", "Elizabeth Davis|Elizabeth Davis", "Matthew Bilal|Matthew Bilal", "Kasey Sullivan|Kasey Sullivan", "Peggy Merkel|Peggy Merkel", "Mary Walsh|Mary Walsh", "Frank Walsh|Frank Walsh", "Felicia Trojanowski|Felicia Trojanowski", "Jamie Howe|Jamie Howe", "Danny Morris|Danny Morris", "David Stephenson|David Stephenson", "George Sparks|George Sparks", "Clifton Long|Clifton Long", "Joseph Yoon|Joseph Yoon", "Dora Flowers|Dora Flowers", "Angelo Peterson|Angelo Peterson", "Jeffrey Lee|Jeffrey Lee", "Shirley Cooke|Shirley Cooke", "Denise Woll|Denise Woll"];
+	}
+	if(s1.value=="Algorithms"){
+		var optionArray = ["|", "Gaye Birdsong|Gaye Birdsong", "Kathleen Gaona|Kathleen Gaona", "Jose Espy|Jose Espy", "Frank Andrews|Frank Andrews", "Melissa Wagner|Melissa Wagner", "Ann Putnam|Ann Putnam", "Claudia Brady|Claudia Brady", "Jennifer Delay|Jennifer Delay", "Amy Valdez|Amy Valdez", "Gerald White|Gerald White", "James Karasti|James Karasti", "Ruth Kemp|Ruth Kemp", "Nancy Jones|Nancy Jones", "Sandra Brown|Sandra Brown", "Verna Bogart|Verna Bogart", "Scott Osborn|Scott Osborn", "Bell Livingstone|Bell Livingstone", "John Brown|John Brown", "Christopher Wakham|Christopher Wakham", "Latisha Johnson|Latisha Johnson"];
+;
+	}
+	if(s1.value=="Embedded Systems"){
+		var optionArray = ["|", "Miguel Gaskins|Miguel Gaskins", "Pamela Dwyer|Pamela Dwyer", "Kenneth Byrd|Kenneth Byrd", "David Knuckles|David Knuckles", "Janelle Talamantes|Janelle Talamantes", "Carla Brown|Carla Brown", "Henry Sales|Henry Sales", "Yolanda Goodson|Yolanda Goodson", "Marla Christmas|Marla Christmas", "Dara Stanfill|Dara Stanfill", "Steven Griggs|Steven Griggs", "Charlie Pettibone|Charlie Pettibone", "Ashley Gilbert|Ashley Gilbert", "Mary Laford|Mary Laford", "Sheila Stanley|Sheila Stanley", "Jane Mccollum|Jane Mccollum", "Christopher Mcgee|Christopher Mcgee", "Mark Davis|Mark Davis", "Richard Seaton|Richard Seaton", "James Gammill|James Gammill"];
+	}
+	if(s1.value=="Graphic Design"){
+		var optionArray = ["|", "Katie Muto|Katie Muto", "Debbie Hernadez|Debbie Hernadez", "Patrick Jones|Patrick Jones", "Keith Martel|Keith Martel", "Wayne Gassaway|Wayne Gassaway", "Bret Marshall|Bret Marshall", "Virgina Paige|Virgina Paige", "Robert Hughes|Robert Hughes", "Suzanne Dufilho|Suzanne Dufilho", "Anna Petrus|Anna Petrus", "James Fugate|James Fugate", "Joseph Bridgewater|Joseph Bridgewater", "Cecil Morgan|Cecil Morgan", "William Arlington|William Arlington", "Joe Romero|Joe Romero", "Larry Brown|Larry Brown", "Cecil Farmer|Cecil Farmer"];
+	}
+	if(s1.value=="Computer Architecture"){
+		var optionArray = ["|", "Matthew Jones|Matthew Jones", "Jack Smith|Jack Smith", "Elizabeth Davis|Elizabeth Davis", "Matthew Bilal|Matthew Bilal", "Kasey Sullivan|Kasey Sullivan", "Peggy Merkel|Peggy Merkel", "Mary Walsh|Mary Walsh", "Frank Walsh|Frank Walsh", "Felicia Trojanowski|Felicia Trojanowski", "Jamie Howe|Jamie Howe", "Danny Morris|Danny Morris", "David Stephenson|David Stephenson", "George Sparks|George Sparks", "Clifton Long|Clifton Long", "Joseph Yoon|Joseph Yoon", "Dora Flowers|Dora Flowers", "Angelo Peterson|Angelo Peterson", "Jeffrey Lee|Jeffrey Lee", "Shirley Cooke|Shirley Cooke", "Denise Woll|Denise Woll"];
+	}
+	if(s1.value=="Robotics"){
+		var optionArray = ["|", "Sandra Felton|Sandra Felton", "Thomas Rice|Thomas Rice", "Bradley Costain|Bradley Costain", "Scott Wright|Scott Wright", "Leonard Epstein|Leonard Epstein", "Clara Terrell|Clara Terrell", "Antonio Hawkins|Antonio Hawkins", "Ray Anderson|Ray Anderson", "Russell Griswold|Russell Griswold", "Paul Turnbull|Paul Turnbull", "Betty Paul|Betty Paul", "Patrick Willis|Patrick Willis", "Derrick Turner|Derrick Turner", "Pauline Stills|Pauline Stills", "Robert Bramble|Robert Bramble", "Sandra Grey|Sandra Grey", "Marcos Tucker|Marcos Tucker", "Eugene White|Eugene White", "Arthur Moore|Arthur Moore", "Jerry King|Jerry King"]; 
+ 
+	} 
+	for(var option in optionArray){
+		var pair=optionArray[option].split("|")
+		var newOption = document.createElement("option");
+		newOption.value= pair[0];
+		newOption.innerHTML=pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+</head>
+<body>
+<h2>Choose Accordingly</h2>
+<hr/>
+<h3> First Preference </h3>
+Choose Research Area:
+<select id="slct1" name="slct1" onchange="populate(this.id,'slct2')">
+<option value=""></option>
+<option value="Deep Learning">Deep Learning</option>
+<option value="Big Data">Big Data</option>
+<option value="Cryptography">Cryptography</option>
+<option value="Algorithms">Algorithms</option>
+<option value="Embedded Systems">Embedded Systems</option>
+<option value="Graphic Design">Graphic Design</option>
+<option value="Computer Architecture">Computer Architecture</option>
+<option value="Robotics">Robotics</option>
+</select>
+<hr/>
+Choose Professor:
+<select id="slct2" name="slct2"></select>
+<hr />
+<hr/>
+
+
+<h3> Second Preference </h3>
+Choose Research Area:
+<select id="slct3" name="slct3" onchange="populate(this.id,'slct4')">
+<option value=""></option>
+<option value="Deep Learning">Deep Learning</option>
+<option value="Big Data">Big Data</option>
+<option value="Cryptography">Cryptography</option>
+<option value="Algorithms">Algorithms</option>
+<option value="Embedded Systems">Embedded Systems</option>
+<option value="Graphic Design">Graphic Design</option>
+<option value="Computer Architecture">Computer Architecture</option>
+<option value="Robotics">Robotics</option>
+</select>
+<hr/>
+Choose Professor:
+<select id="slct4" name="slct4"></select>
+<hr />
+
+
+
+
+<hr/>
+
+<h3> Third Preference </h3>
+Choose Research Area:
+<select id="slct5" name="slct5" onchange="populate(this.id,'slct6')">
+<option value=""></option>
+<option value="Deep Learning">Deep Learning</option>
+<option value="Big Data">Big Data</option>
+<option value="Cryptography">Cryptography</option>
+<option value="Algorithms">Algorithms</option>
+<option value="Embedded Systems">Embedded Systems</option>
+<option value="Graphic Design">Graphic Design</option>
+<option value="Computer Architecture">Computer Architecture</option>
+<option value="Robotics">Robotics</option>
+</select>
+<hr/>
+Choose Professor:
+<select id="slct6" name="slct6"></select>
+<hr />
+
+
+</body></html>
+
+
+
+
+

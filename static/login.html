@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        IIT Patna Intern Portal
+    </title>
+</head>
+<style>
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn,.signupbtn {
+    
+    width: 25%;
+}
+
+/* Add padding to container elements */
+.container {
+    width:50%; 
+    padding: 16px;
+    border:2px;
+    border-color: #ccc;
+    border-style: solid;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+</style>
+<body align="center">
+
+<h2 align="center">Professor Login Form </h2>
+
+<div align="center" class="container" style="width:800px; margin:0 auto;">
+    <form action="/login.json" class="register_form" >
+    
+    <label ><b>Email</b></label>
+    <br>
+    <input type="text" placeholder="Enter Email" name="email" required>
+    <br>
+    <label><b>Password</b></label>
+    <br>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    <br>
+    <div align="center" class="clearfix">
+      <button align="center" type="button" class="cancelbtn">Cancel</button>
+      <button align="center" type="submit" class="signupbtn">Login</button>
+    </div>
+</form>
+</div>
+</body>
+</html>
