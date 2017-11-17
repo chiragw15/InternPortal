@@ -5,6 +5,7 @@ import json
 import os
 from os import environ as env
 from sys import argv
+from Crypto.Cipher import AES
 
 import bottle
 from bottle import get, run, request, response, static_file
@@ -73,7 +74,7 @@ def get_registerJSON():
         print(results)
         return {"response": "Registered successfully"}
 
-@get("login.json")
+@get("/login.json")
 def get_loginJSON():
     try:
         email = request.query["email"]
@@ -81,9 +82,31 @@ def get_loginJSON():
     except KeyError:
         return {"respose": "Some error occurred"}
     else:
-        #results = graph.cypher.execute( * )
-        #enter graph query here (in place of star in above line) to find prof from email and password
-        return {"response":"Success"}
+        results = graph.cypher.execute( 
+        "match (n: professor) where n.email = \"" + email + 
+        "\" and n.password = \"" + password + "\" return n;" 
+        )
+        response.content_type = "application/json"
+        print(results)
+        c = 0
+        for row in results:
+            c = c+1
+        if(c == 0):
+            return {"response":"Incorrect username or password"}
+        else:
+            obj = AES.new('This is a key123', AES.MODE_CFB, 'This is an IV456')
+            message = results[0].n.properties['password']
+            ciphertext = obj.encrypt(message)
+
+            #obj2 = AES.new('This is a key123', AES.MODE_CFB, 'This is an IV456')
+            #obj2.decrypt(ciphertext)
+
+            return {"response":"Login Success",
+                    "name": results[0].n.properties['name'],
+                    "email": results[0].n.properties['email'],
+                    "research": results[0].n.properties['research'],
+                    "vacancy": results[0].n.properties['vacancy'],
+                    "api-token": ciphertext.decode('ISO-8859-1')}
 
 @get("/getProfs.json")
 def get_prof_list():
@@ -92,10 +115,12 @@ def get_prof_list():
     except KeyError:
         return {"response":"No professor found"}
     else:
-        #results = graph.cypher.execute( * )
-        #enter graph query here (in place of star in above line) to find prof from research area
-        return {"response":"Success"}
-
+        results = graph.cypher.execute( 
+        "match (n: professor) where n.research = \"" + research + "\" return n;" 
+        )
+        response.content_type = "application/json"
+        print(results)
+        return json.dumps([{"professors": row.n.properties} for row in results])
 
 
 bottle.run(host='0.0.0.0', port=argv[1])
