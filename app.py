@@ -13,6 +13,10 @@ from bottle import get, run, request, response, static_file
 from py2neo import Graph, authenticate
 #from urllib.parse import urlparse, urlunparse
 
+
+
+from neo4jrestclient.client import GraphDatabase
+
 '''
 from neo4jrestclient.client import GraphDatabase
 
@@ -23,10 +27,15 @@ bottle.debug(True)
 url = urlparse(GRAPHENEDB_URL)
 url_without_auth = urlunparse((url.scheme, "{0}:{1}".format(url.hostname, url.port), url.path, None, None, None))
 
-gdb = GraphDatabase(url_without_auth, username = url.username, password = url.password)
+gdb = GraphDatabase(url_without_auth, username = url.username, password = url.password)'''
+
+
+
+graph = Graph("http://neo4j:mamakancha@localhost:7474/db/data/")
 
 '''
 graph = Graph("http://neo4j:Chirag@1234@localhost:7474/db/data/")
+
 
 #graphenedb_url = os.environ.get("GRAPHENEDB_BOLT_URL")
 #graphenedb_user = os.environ.get("GRAPHENEDB_BOLT_USER")
@@ -64,7 +73,11 @@ def get_registerJSON():
     except KeyError:
         return {"respose": "Some error occurred"}
     else:
+
+        results = graph.run(
+
         results = graph.cypher.execute(
+
         "create (n:professor{name:" + "\"" + name + "\"" + "," + 
                             "research:" + "\"" + research + "\"" + "," +
                             "email:" + "\"" + email + "\"" + "," +
