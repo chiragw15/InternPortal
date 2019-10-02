@@ -1,6 +1,6 @@
 # InternPortal
 
-DBMS Lab Mini Project. The aim of this project is to use NEO4J graph database to to store information about a professor and an intern and to connect both of them. 
+DBMS Lab Mini Project. The aim of this project is to use NEO4J graph database to to store information about a professor and an intern and to connect both of them. Thanks!
 
 ## Roadmap
 
